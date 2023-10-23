@@ -6,11 +6,20 @@ import { useEffect } from "react";
 
 function Dropdown({ children, name, icon }) {
   const [dropDownOpened, setDropDownOpened] = useState(false);
-  const [animationEnded, setAnimationEnded] = useState(false);
+  const [showInput, setShowInput] = useState(false);
+  const [error, setError] = useState('')
 
   const dropDownClickHandler = () => {
     setDropDownOpened(!dropDownOpened);
   };
+
+  useEffect(()=>{
+    const timeoutId = setTimeout(()=>{
+      setError('')
+    }, 3000)
+
+    return ()=> clearTimeout(timeoutId)
+  }, [error])
 
   return (
     <div className="input-wrapper">
@@ -23,15 +32,18 @@ function Dropdown({ children, name, icon }) {
         {dropDownOpened && (
           <motion.div
             className="input-wrapper-details"
-            initial={{ height: 0}}
+            initial={{ height: 0 }}
             animate={{
               height: "auto",
-              display: 'flex',
-              transition: { duration: 0.5, delay: 0.2 },
+              display: "flex",
+              transition: { duration: 0.6, delay: 0.1 },
             }}
             exit={{ height: 0 }}
           >
-            {children}
+            {error && <h3 className="text-red-600">{error}</h3>}
+            {React.Children.map(children, (child) =>
+              React.cloneElement(child, { showInput, setShowInput, setError })
+            )}
           </motion.div>
         )}
       </AnimatePresence>

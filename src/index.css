@@ -33,9 +33,9 @@
     width: 100%;
   }
 
-  span{
+  span {
     text-align: left;
-    flex:1;
+    flex: 1;
   }
 
   h1 {
@@ -47,7 +47,7 @@
     @apply text-xl
     font-semibold;
   }
-  
+
   h3 {
     @apply text-lg
     font-semibold;
@@ -73,6 +73,10 @@
     @apply scale-90;
   }
 
+  .interface-button {
+    min-width: 120px;
+  }
+
   form {
     width: 100%;
     display: flex;
@@ -84,13 +88,15 @@
     @apply bg-slate-200 rounded-lg;
     width: 100%;
     padding: 0.4rem 1rem;
+    height: 28px;
   }
 
-  input[type="checkbox"]{
+  input[type="checkbox"] {
     padding: 0;
     margin: 4px;
     margin-right: 14px;
     width: 15px;
+    height: auto;
   }
 
   input:focus {
@@ -142,10 +148,36 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 6px;
   }
 
-  .no-gap{
+  .item-collapsed {
+    @apply bg-slate-100;
+    padding: 8px 12px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .education-input-wrapper {
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .no-gap {
     gap: 0;
+  }
+
+  .item-collapsed-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
   }
 
   .input-item {

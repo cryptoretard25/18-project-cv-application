@@ -1,86 +1,82 @@
 import React from "react";
-import * as Icons from './Icons'
+import * as Icons from "./Icons";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import { useState } from "react";
+import { useEffect } from "react";
+import ItemCollapsed from "./ItemCollapsed";
+import EducationInput from "./EducationInput";
 
-function Education() {
+const emptyEducation = {
+  school: "",
+  degree: "",
+  location: "",
+  startDate: "",
+  endDate: "",
+};
+
+function Education({ showInput, setShowInput, setError }) {
+  const { portfolioState, portfolioDispatch } = useContext(AppContext);
+  const [education, setEducation] = useState(emptyEducation);
+
+  const showInputHandler = () => {
+    setShowInput(!showInput);
+  };
+
+  const educationInputHandler = (e) => {
+    const type = e.target.id;
+    setEducation({
+      ...education,
+      [type]: e.target.value,
+    });
+  };
+
+  const saveButtonHandler = (e) => {
+    e.preventDefault();
+    const complete = Object.values(education).every((item) => item);
+    if (!complete) {
+      setError("You need to fill all the fields");
+      return;
+    }
+    portfolioDispatch({ type: "EDUCATION", value: education });
+    setEducation(emptyEducation);
+    showInputHandler();
+  };
+
+  useEffect(() => {
+    console.log(education);
+  }, [education]);
+
+  useEffect(() => {
+    console.log(portfolioState);
+  }, [portfolioState]);
+
   const educationInput = (
     <form>
-      <div className="input-item">
-        <label htmlFor="school">
-          <h3>School</h3>
-        </label>
-        <input
-          type="text"
-          placeholder="Enter school / university"
-          id="school"
-          maxLength="19"
-          value=""
-          onChange={() => {}}
-        />
-      </div>
-      <div className="input-item">
-        <label htmlFor="degree">
-          <h3>Degree</h3>
-        </label>
-        <input
-          type="text"
-          placeholder="Enter deegree / Field of Study"
-          id="degree"
-          maxLength="19"
-          value=""
-          onChange={() => {}}
-        />
-      </div>
-      <div className="input-item">
-        <label htmlFor="location">
-          <h3>Location</h3>
-        </label>
-        <input
-          type="text"
-          id="location"
-          maxLength="19"
-          placeholder="Enter Location"
-          value=""
-          onChange={() => {}}
-        />
-      </div>
-      <div className="input-item">
-        <label htmlFor="startdate">
-          <h3>Start Date</h3>
-        </label>
-        <input
-          type="date"
-          id="startdate"
-          maxLength="19"
-          value=""
-          onChange={() => {}}
-        />
-      </div>
-      <div className="input-item">
-        <label htmlFor="enddate">
-          <h3>End Date</h3>
-        </label>
-        <input
-          type="date"
-          id="enddate"
-          maxLength="19"
-          value=""
-          onChange={() => {}}
-        />
-        <label className="flex w-full gap-2 justify-end items-center">
-          <p>Present</p>
-          <input type="checkbox" onChange={() => {}} />
-        </label>
-      </div>
+      <EducationInput
+        education={education}
+        educationInputHandler={educationInputHandler}
+        setEducation={setEducation}
+      />
       <div className="interface">
-        <button className="text-base bg-slate-200">
+        <button
+          className="text-base bg-slate-200 hover:bg-slate-400 hover:text-white"
+          onClick={(e) => {
+            e.preventDefault();
+            showInputHandler();
+          }}
+        >
           <Icons.Cancel size={"1x"} />
           Cancel
         </button>
-        <button className="text-base bg-slate-200">
+        {/* <button className="text-base bg-slate-200 hover:bg-slate-400 hover:text-white">
           <Icons.Thrash size={"1x"} />
           Delete
-        </button>
-        <button className="text-base bg-slate-200">
+        </button> */}
+        <button
+          className="text-base bg-cyan-600 text-white hover:bg-cyan-500 "
+          onClick={saveButtonHandler}
+        >
           <Icons.Save size={"lg"} />
           Save
         </button>
@@ -88,12 +84,24 @@ function Education() {
     </form>
   );
 
-  return (
+  const educationInterface = (
     <>
-      {educationInput}
-
+      {portfolioState.education.map((item, index) => {
+        return <ItemCollapsed key={index} item={item} setEducation={setEducation} education={education}/>;
+      })}
+      <div className="interface items-center justify-center">
+        <button
+          className="text-base text-white bg-cyan-600 flex-initial hover:bg-cyan-500 px-5 interface-button"
+          onClick={showInputHandler}
+        >
+          <Icons.Add size={"lg"} />
+          Education
+        </button>
+      </div>
     </>
   );
+
+  return <>{showInput ? educationInput : educationInterface}</>;
 }
 
 export default Education;

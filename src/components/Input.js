@@ -5,6 +5,7 @@ import { AppContext } from "../context/AppContext";
 import * as Icons from "./Icons";
 import Dropdown from "./Dropdown";
 import Education from "./Education";
+import Experience from "./Experience";
 
 function Input() {
   const { portfolioDispatch } = useContext(AppContext);
@@ -29,7 +30,9 @@ function Input() {
       <Dropdown
         name="Experience"
         icon={<Icons.Briefcase size={"sm"} />}
-      ></Dropdown>
+      >
+        <Experience />
+      </Dropdown>
     </div>
   );
 }

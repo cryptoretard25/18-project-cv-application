@@ -9,6 +9,12 @@ import {
   faBriefcase,
   faFloppyDisk,
   faBan,
+  faCirclePlus,
+  faEye,
+  faEyeSlash,
+  faPlus,
+  faMinus,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function Thrash({ size }) {
@@ -55,5 +61,33 @@ export function Save({size}){
 }
 
 export function Cancel({size}){
+  return <FontAwesomeIcon icon={faBan} size={size} />;
+}
+
+export function Add({size}){
+  return <FontAwesomeIcon icon={faCirclePlus} size={size} />;
+}
+
+export function OpenedEye({size}){
+  return <FontAwesomeIcon icon={faEye} size={size} />;
+}
+
+export function ClosedEye({ size }) {
+  return <FontAwesomeIcon icon={faEyeSlash} size={size} />;
+}
+
+export function Plus({size}){
+  return <FontAwesomeIcon icon={faPlus} size={size} />;
+}
+
+export function Minus({size}){
+  return <FontAwesomeIcon icon={faMinus} size={size} />;
+}
+
+export function Accept({size}){
+  return <FontAwesomeIcon icon={faCheck} size={size}/>;
+}
+
+export function Decline({size}){
   return <FontAwesomeIcon icon={faBan} size={size} />;
 }
