@@ -17,6 +17,7 @@ import {
   faCheck,
   faXmark,
   faTrash,
+  faPen,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function Thrash({ size }) {
@@ -89,10 +90,26 @@ export function Accept({ size }) {
   return <FontAwesomeIcon icon={faCheck} size={size} />;
 }
 
-export function Close({ size }) {
-  return <FontAwesomeIcon icon={faXmark} size={size} />;
+export function Close({ size, onClick, className }) {
+  return (
+    <FontAwesomeIcon icon={faXmark} size={size} onClick={onClick} className={className} />
+  );
 }
 
-export function Remove({size}) {
-  return <FontAwesomeIcon icon={faTrash} size={size} />;
+export function Remove({ size, onClick, className }) {
+  return (
+    <FontAwesomeIcon
+      icon={faTrash}
+      size={size}
+      onClick={onClick}
+      style={{ padding: "1px" }}
+      className={className}
+    />
+  );
+}
+
+export function Edit({ size, onClick, className }) {
+  return (
+    <FontAwesomeIcon icon={faPen} size={size} onClick={onClick} className={className} />
+  );
 }

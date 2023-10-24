@@ -1,11 +1,11 @@
 import React from "react";
-import PersonalDetails from "./PersonalDetails";
+import PersonalDetails from "./PersonalDetails/PersonalDetails";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import * as Icons from "./Icons";
 import Dropdown from "./Dropdown";
-import Education from "./Education";
-import Experience from "./Experience";
+import Education from "./Education/Education";
+import Experience from "./Experince/Experience";
 
 function Input() {
   const { portfolioDispatch } = useContext(AppContext);

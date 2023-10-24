@@ -1,24 +1,20 @@
 import React from "react";
 import * as Icons from "./Icons";
 import { useState } from "react";
-import EducationInput from "./EducationInput";
+import EducationInput from "./Education/EducationInput";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { useEffect } from "react";
 
-function ItemCollapsed({ item }) {
-  const { portfolioState, portfolioDispatch } = useContext(AppContext);
+function ItemCollapsed({ item, setError }) {
+  const { portfolioDispatch } = useContext(AppContext);
   const [editItem, setEditItem] = useState({ ...item });
   const [collapsed, setCollapsed] = useState(true);
 
-  const onTitleClickHandler = (e) => {
+  const onTitleClickHandler = () => {
     setEditItem({ ...item });
     setCollapsed(!collapsed);
   };
-
-  // const onCancelClickHandler = ()=>{
-  //   setEditItem({...item})
-  //   setCollapsed(!collapsed)
-  // }
 
   const editItemInputHandler = (e) => {
     setEditItem({
@@ -27,15 +23,51 @@ function ItemCollapsed({ item }) {
     });
   };
 
+  const onAcceptClickHandler = () => {
+    const complete = Object.values(editItem).every((item) => item);
+    if (!complete) {
+      setError("You need to fill all the fields");
+      return;
+    }
+    const uid = item.uid;
+    portfolioDispatch({ type: "EDIT_EDUCATION", uid: uid, value: editItem });
+    setError("Update successfull");
+    setCollapsed(!collapsed);
+  };
+
+  useEffect(() => {
+    console.log(editItem);
+  }, [editItem]);
+
+  const onRemoveCLickHandler = () => {
+    const uid = item.uid;
+    portfolioDispatch({ type: "REMOVE_EDUCATION", uid: uid });
+    setError("Item removed");
+  };
+
   return (
     <div className="item-collapsed">
       <div className="item-collapsed-title">
-        <h2
-          className="justify-start hover:text-slate-600"
-          onClick={onTitleClickHandler}
-        >
+        <h2 className="justify-start items-center">
           <span className="flex-1">{editItem.school}</span>
-          {collapsed ? <Icons.Plus size={"lg"} /> : <Icons.Close size={"xl"} />}
+          <Icons.Remove
+            size={"1x"}
+            onClick={onRemoveCLickHandler}
+            className={"hover:text-slate-600"}
+          />
+          {collapsed ? (
+            <Icons.Edit
+              size={"1x"}
+              onClick={onTitleClickHandler}
+              className={"hover:text-slate-600"}
+            />
+          ) : (
+            <Icons.Close
+              size={"xl"}
+              onClick={onTitleClickHandler}
+              className={"hover:text-slate-600"}
+            />
+          )}
         </h2>
       </div>
       {!collapsed && (
@@ -45,16 +77,22 @@ function ItemCollapsed({ item }) {
             setInputState={setEditItem}
             inputHandler={editItemInputHandler}
           />
-          <div className="interface" style={{ padding: "6px 0 0 0", justifyContent: "end" }} >
-            <div className="hover:text-slate-500">
+          <div
+            className="interface"
+            style={{ padding: "12px 8px 0 0", justifyContent: "end" }}
+          >
+            <div
+              className="hover:text-slate-500"
+              onClick={onAcceptClickHandler}
+            >
               <Icons.Accept size={"2x"} />
             </div>
-            {/* <div className="hover:text-slate-500" onClick={onCancelClickHandler}>
-              <Icons.Close size={"2x"} />
+            {/* <div
+              className="hover:text-slate-500"
+              style={{ paddingBottom: "1px" }}
+            >
+              
             </div> */}
-            <div className="hover:text-slate-500" style={{paddingBottom: '1px'}}>
-              <Icons.Remove size={"xl"} />
-            </div>
           </div>
         </div>
       )}

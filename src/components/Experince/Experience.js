@@ -1,5 +1,5 @@
 import React from 'react'
-import * as Icons from './Icons'
+import * as Icons from '../Icons'
 
 
 function Experience({showInput, setShowInput}) {

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useReducer } from "react";
 import { createContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const AppContext = createContext();
 
@@ -31,6 +32,7 @@ const initialPersonalDetails = {
       location: "Russia, Ivanovo",
       startDate: "2012-09-01",
       endDate: "2015-07-01",
+      uid: uuidv4(),
     },
     {
       school: "Moscow state university",
@@ -38,6 +40,7 @@ const initialPersonalDetails = {
       location: "Russia, Moscow",
       startDate: "2015-09-01",
       endDate: "Present",
+      uid: uuidv4(),
     },
   ],
   experience: [],
@@ -57,11 +60,22 @@ const reducer = (currState, action) => {
           [action.type]: action.value,
         },
       };
-    case 'EDUCATION':
-      return {...currState, education: [
-        ...currState.education,
-        action.value
-      ]}
+    case "ADD_EDUCATION":
+      return {
+        ...currState,
+        education: [...currState.education, action.value],
+      };
+    case "EDIT_EDUCATION":
+      return {
+        ...currState,
+        education: currState.education.map((item)=>{
+          return item.uid === action.uid? {...action.value}: item
+        })
+      };
+    case "REMOVE_EDUCATION":
+      //return { ...currState, education: [...action.value] };
+
+      return {...currState, education: [...currState.education.filter(item=> item.uid !== action.uid)]}
     case "CLEAR":
       return initialPersonalDetails;
     default:

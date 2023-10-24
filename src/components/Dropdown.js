@@ -40,7 +40,7 @@ function Dropdown({ children, name, icon }) {
             }}
             exit={{ height: 0 }}
           >
-            {error && <h3 className="text-red-600">{error}</h3>}
+            {error && <h3>{error}</h3>}
             {React.Children.map(children, (child) =>
               React.cloneElement(child, { showInput, setShowInput, setError })
             )}

@@ -5,7 +5,7 @@ function inputStateInput({ inputState, inputHandler, setInputState }) {
     <>
       <div className="input-item">
         <label htmlFor="school">
-          <h3>School</h3>
+          <h3>School / University</h3>
         </label>
         <input
           type="text"
@@ -66,11 +66,12 @@ function inputStateInput({ inputState, inputHandler, setInputState }) {
             value={inputState.endDate}
             onChange={inputHandler}
           />
-          <label className="flex w-full gap-2 justify-end items-center">
+          <label className="flex w-full gap-1 justify-end items-center text-l">
             <p>Present</p>
             <input
               type="checkbox"
               id="endDate"
+              className="endDateCheckbox"
               onChange={(e) => {
                 inputState.endDate !== "Present"
                   ? setInputState({ ...inputState, [e.target.id]: "Present" })

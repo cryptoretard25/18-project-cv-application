@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
-import { User } from "./Icons";
+import { AppContext } from "../../context/AppContext";
+import { User } from "../Icons";
 
 function PersonalDetails() {
   const { portfolioState, portfolioDispatch } = useContext(AppContext);

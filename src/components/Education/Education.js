@@ -1,23 +1,17 @@
 import React from "react";
-import * as Icons from "./Icons";
+import * as Icons from "../Icons";
 import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../../context/AppContext";
 import { useState } from "react";
-import { useEffect } from "react";
-import ItemCollapsed from "./ItemCollapsed";
+import ItemCollapsed from "../ItemCollapsed";
 import EducationInput from "./EducationInput";
+import EducationItem from "../../classes/EducationItem";
 
-const emptyEducation = {
-  school: "",
-  degree: "",
-  location: "",
-  startDate: "",
-  endDate: "",
-};
+const emptyEducation = () => new EducationItem();
 
 function Education({ showInput, setShowInput, setError }) {
   const { portfolioState, portfolioDispatch } = useContext(AppContext);
-  const [education, setEducation] = useState(emptyEducation);
+  const [education, setEducation] = useState(emptyEducation());
 
   const showInputHandler = () => {
     setShowInput(!showInput);
@@ -38,45 +32,27 @@ function Education({ showInput, setShowInput, setError }) {
       setError("You need to fill all the fields");
       return;
     }
-    portfolioDispatch({ type: "EDUCATION", value: education });
-    setEducation(emptyEducation);
+    portfolioDispatch({ type: "ADD_EDUCATION", value: education });
+    setEducation(emptyEducation());
     showInputHandler();
   };
 
-  useEffect(() => {
-    console.log(education);
-  }, [education]);
+  const cancelButtonHandler = (e) => {
+    e.preventDefault();
+    setEducation(emptyEducation());
+    showInputHandler();
 
-  useEffect(() => {
-    console.log(portfolioState);
-  }, [portfolioState]);
+  }
 
   const educationInput = (
     <form>
-      <EducationInput
-        inputState={education}
-        inputHandler={educationInputHandler}
-        setInputState={setEducation}
-      />
+      <EducationInput inputState={education} inputHandler={educationInputHandler} setInputState={setEducation} />
       <div className="interface">
-        <button
-          className="text-base bg-slate-200 hover:bg-slate-400 hover:text-white"
-          onClick={(e) => {
-            e.preventDefault();
-            showInputHandler();
-          }}
-        >
+        <button className="text-base bg-slate-200 hover:bg-slate-400 hover:text-white" onClick={cancelButtonHandler} >
           <Icons.Cancel size={"1x"} />
           Cancel
         </button>
-        {/* <button className="text-base bg-slate-200 hover:bg-slate-400 hover:text-white">
-          <Icons.Thrash size={"1x"} />
-          Delete
-        </button> */}
-        <button
-          className="text-base bg-cyan-600 text-white hover:bg-cyan-500 "
-          onClick={saveButtonHandler}
-        >
+        <button className="text-base bg-cyan-600 text-white hover:bg-cyan-500 " onClick={saveButtonHandler} >
           <Icons.Save size={"lg"} />
           Save
         </button>
@@ -86,8 +62,8 @@ function Education({ showInput, setShowInput, setError }) {
 
   const educationInterface = (
     <>
-      {portfolioState.education.map((item, index) => {
-        return <ItemCollapsed key={index} item={item} setEducation={setEducation} education={education}/>;
+      {portfolioState.education.map((item) => {
+        return <ItemCollapsed key={item.uid} item={item} setError = {setError} />;
       })}
       <div className="interface items-center justify-center">
         <button
