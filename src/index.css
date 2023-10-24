@@ -140,6 +140,8 @@
     flex-direction: column;
     gap: 8px;
     width: 400px;
+    max-width: 400px;
+    min-width: 400px;
     align-items: start;
   }
 

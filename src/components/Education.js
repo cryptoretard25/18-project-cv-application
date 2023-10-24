@@ -54,9 +54,9 @@ function Education({ showInput, setShowInput, setError }) {
   const educationInput = (
     <form>
       <EducationInput
-        education={education}
-        educationInputHandler={educationInputHandler}
-        setEducation={setEducation}
+        inputState={education}
+        inputHandler={educationInputHandler}
+        setInputState={setEducation}
       />
       <div className="interface">
         <button

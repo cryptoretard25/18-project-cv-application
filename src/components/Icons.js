@@ -15,6 +15,8 @@ import {
   faPlus,
   faMinus,
   faCheck,
+  faXmark,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function Thrash({ size }) {
@@ -32,7 +34,6 @@ export function Cap({ size }) {
 export function Briefcase({ size }) {
   return <FontAwesomeIcon icon={faBriefcase} size={size} />;
 }
-
 
 export function ArrowDown({ size, onClick }) {
   return (
@@ -56,19 +57,19 @@ export function ArrowUp({ size, onClick }) {
   );
 }
 
-export function Save({size}){
-  return <FontAwesomeIcon icon={faFloppyDisk} size={size}/>;
+export function Save({ size }) {
+  return <FontAwesomeIcon icon={faFloppyDisk} size={size} />;
 }
 
-export function Cancel({size}){
+export function Cancel({ size }) {
   return <FontAwesomeIcon icon={faBan} size={size} />;
 }
 
-export function Add({size}){
+export function Add({ size }) {
   return <FontAwesomeIcon icon={faCirclePlus} size={size} />;
 }
 
-export function OpenedEye({size}){
+export function OpenedEye({ size }) {
   return <FontAwesomeIcon icon={faEye} size={size} />;
 }
 
@@ -76,18 +77,22 @@ export function ClosedEye({ size }) {
   return <FontAwesomeIcon icon={faEyeSlash} size={size} />;
 }
 
-export function Plus({size}){
+export function Plus({ size }) {
   return <FontAwesomeIcon icon={faPlus} size={size} />;
 }
 
-export function Minus({size}){
+export function Minus({ size }) {
   return <FontAwesomeIcon icon={faMinus} size={size} />;
 }
 
-export function Accept({size}){
-  return <FontAwesomeIcon icon={faCheck} size={size}/>;
+export function Accept({ size }) {
+  return <FontAwesomeIcon icon={faCheck} size={size} />;
 }
 
-export function Decline({size}){
-  return <FontAwesomeIcon icon={faBan} size={size} />;
+export function Close({ size }) {
+  return <FontAwesomeIcon icon={faXmark} size={size} />;
+}
+
+export function Remove({size}) {
+  return <FontAwesomeIcon icon={faTrash} size={size} />;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function EducationInput({ education, educationInputHandler, setEducation }) {
+function inputStateInput({ inputState, inputHandler, setInputState }) {
   return (
     <>
       <div className="input-item">
@@ -11,9 +11,9 @@ function EducationInput({ education, educationInputHandler, setEducation }) {
           type="text"
           placeholder="Enter school / university"
           id="school"
-          maxLength="19"
-          value={education.school}
-          onChange={educationInputHandler}
+          maxLength="50"
+          value={inputState.school}
+          onChange={inputHandler}
         />
       </div>
       <div className="input-item">
@@ -24,9 +24,9 @@ function EducationInput({ education, educationInputHandler, setEducation }) {
           type="text"
           placeholder="Enter deegree / Field of Study"
           id="degree"
-          maxLength="19"
-          value={education.degree}
-          onChange={educationInputHandler}
+          maxLength="50"
+          value={inputState.degree}
+          onChange={inputHandler}
         />
       </div>
       <div className="input-item">
@@ -36,10 +36,10 @@ function EducationInput({ education, educationInputHandler, setEducation }) {
         <input
           type="text"
           id="location"
-          maxLength="19"
+          maxLength="40"
           placeholder="Enter Location"
-          value={education.location}
-          onChange={educationInputHandler}
+          value={inputState.location}
+          onChange={inputHandler}
         />
       </div>
       <div className="flex">
@@ -51,8 +51,8 @@ function EducationInput({ education, educationInputHandler, setEducation }) {
             type="date"
             id="startDate"
             maxLength="19"
-            value={education.startDate}
-            onChange={educationInputHandler}
+            value={inputState.startDate}
+            onChange={inputHandler}
           />
         </div>
         <div className="input-item">
@@ -60,11 +60,11 @@ function EducationInput({ education, educationInputHandler, setEducation }) {
             <h3>End Date</h3>
           </label>
           <input
-            type={education.endDate !== "Present" ? "date" : "text"}
+            type={inputState.endDate !== "Present" ? "date" : "text"}
             id="endDate"
             maxLength="19"
-            value={education.endDate}
-            onChange={educationInputHandler}
+            value={inputState.endDate}
+            onChange={inputHandler}
           />
           <label className="flex w-full gap-2 justify-end items-center">
             <p>Present</p>
@@ -72,11 +72,11 @@ function EducationInput({ education, educationInputHandler, setEducation }) {
               type="checkbox"
               id="endDate"
               onChange={(e) => {
-                education.endDate !== "Present"
-                  ? setEducation({ ...education, [e.target.id]: "Present" })
-                  : setEducation({ ...education, [e.target.id]: "" });
+                inputState.endDate !== "Present"
+                  ? setInputState({ ...inputState, [e.target.id]: "Present" })
+                  : setInputState({ ...inputState, [e.target.id]: "" });
               }}
-              checked={education.endDate === "Present"}
+              checked={inputState.endDate === "Present"}
             />
           </label>
         </div>
@@ -85,4 +85,4 @@ function EducationInput({ education, educationInputHandler, setEducation }) {
   );
 }
 
-export default EducationInput;
+export default inputStateInput;
