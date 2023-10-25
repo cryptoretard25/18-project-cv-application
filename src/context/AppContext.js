@@ -73,8 +73,6 @@ const reducer = (currState, action) => {
         })
       };
     case "REMOVE_EDUCATION":
-      //return { ...currState, education: [...action.value] };
-
       return {...currState, education: [...currState.education.filter(item=> item.uid !== action.uid)]}
     case "CLEAR":
       return initialPersonalDetails;

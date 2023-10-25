@@ -7,7 +7,7 @@ import { AppContext } from "../context/AppContext";
 import { useEffect } from "react";
 
 function ItemCollapsed({ item, setError }) {
-  const { portfolioDispatch } = useContext(AppContext);
+  const { portfolioState, portfolioDispatch } = useContext(AppContext);
   const [editItem, setEditItem] = useState({ ...item });
   const [collapsed, setCollapsed] = useState(true);
 
@@ -25,13 +25,19 @@ function ItemCollapsed({ item, setError }) {
 
   const onAcceptClickHandler = () => {
     const complete = Object.values(editItem).every((item) => item);
+    const modified = Object.values(editItem).some( (i, index) => i !== Object.values(item)[index] );
+
     if (!complete) {
       setError("You need to fill all the fields");
       return;
     }
+    if(!modified) {
+      setError('There is nothing to update');
+      return
+    }
     const uid = item.uid;
     portfolioDispatch({ type: "EDIT_EDUCATION", uid: uid, value: editItem });
-    setError("Update successfull");
+    setError("Item updated");
     setCollapsed(!collapsed);
   };
 

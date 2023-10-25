@@ -33,6 +33,7 @@ function Education({ showInput, setShowInput, setError }) {
       return;
     }
     portfolioDispatch({ type: "ADD_EDUCATION", value: education });
+    setError('Item added')
     setEducation(emptyEducation());
     showInputHandler();
   };

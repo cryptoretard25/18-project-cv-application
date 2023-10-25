@@ -16,7 +16,7 @@ function Dropdown({ children, name, icon }) {
   useEffect(()=>{
     const timeoutId = setTimeout(()=>{
       setError('')
-    }, 3000)
+    }, 1500)
 
     return ()=> clearTimeout(timeoutId)
   }, [error])
