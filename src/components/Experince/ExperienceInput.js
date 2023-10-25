@@ -46,7 +46,7 @@ function ExperienceInput({experience, setExperience, experienceInputHandler}) {
         />
       </div>
       {/* Dates */}
-      <div className="flex" style={{ marginBottom: "-18px" }}>
+      <div className="flex" style={{ marginBottom: "-18px", zIndex: '10' }}>
         {/* Start date */}
         <div className="input-item">
           <label htmlFor="startDate">

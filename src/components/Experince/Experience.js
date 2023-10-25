@@ -22,6 +22,15 @@ function Experience({ showInput, setShowInput, setError }) {
 
   const saveButtonHandler = (e) => {
     e.preventDefault();
+    const complete = Object.values(experience).every((item) => item);
+    if (!complete) {
+      setError("You need to fill all the fields");
+      return;
+    }
+    portfolioDispatch({type: "ADD_EXPERIENCE", value: experience})
+    setError('Experince item added')
+    setExperience(emptyExperience())
+    showInputHandler();
   };
 
   const cancelButtonHandler = (e) => {
@@ -32,7 +41,11 @@ function Experience({ showInput, setShowInput, setError }) {
 
   const experienceInput = (
     <form>
-      <ExperienceInput experience={experience} setExperience={setExperience} experienceInputHandler={experienceInputHandler}/>
+      <ExperienceInput
+        experience={experience}
+        setExperience={setExperience}
+        experienceInputHandler={experienceInputHandler}
+      />
       {/* Interface */}
       <div className="interface">
         <button
@@ -44,7 +57,7 @@ function Experience({ showInput, setShowInput, setError }) {
         </button>
         <button
           className="text-base bg-cyan-600 text-white hover:bg-cyan-500 "
-          onClick={() => {}}
+          onClick={saveButtonHandler}
         >
           <Icons.Save size={"lg"} />
           Save
@@ -56,7 +69,13 @@ function Experience({ showInput, setShowInput, setError }) {
   const experienceInterface = (
     <>
       {portfolioState.experience.map((item) => {
-        return <ExperienceItemCollapsed key={item.uid} item={item} setError={setError} />;
+        return (
+          <ExperienceItemCollapsed
+            key={item.uid}
+            item={item}
+            setError={setError}
+          />
+        );
       })}
       <div className="interface items-center justify-center">
         <button

@@ -6,7 +6,6 @@ import { useState } from "react";
 import EducationItemCollapsed from "./EducationItemCollapsed";
 import EducationInput from "./EducationInput";
 import EducationItem from "../../classes/EducationItem";
-import ExperienceItemCollapsed from "../Experince/ExperienceItemCollapsed";
 
 const emptyEducation = () => new EducationItem();
 
@@ -34,7 +33,7 @@ function Education({ showInput, setShowInput, setError }) {
       return;
     }
     portfolioDispatch({ type: "ADD_EDUCATION", value: education });
-    setError('Item added')
+    setError('Education item added')
     setEducation(emptyEducation());
     showInputHandler();
   };
@@ -43,7 +42,6 @@ function Education({ showInput, setShowInput, setError }) {
     e.preventDefault();
     setEducation(emptyEducation());
     showInputHandler();
-
   }
 
   const educationInput = (

@@ -4,7 +4,6 @@ import { useState } from "react";
 import ExperienceInput from "./ExperienceInput";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
-import { useEffect } from "react";
 
 function ExperienceItemCollapsed({ item, setError }) {
   const { portfolioDispatch } = useContext(AppContext);
@@ -24,11 +23,8 @@ function ExperienceItemCollapsed({ item, setError }) {
   };
 
   const onAcceptClickHandler = () => {
-    const complete = Object.values(editItem).every((item) => item);
-    const modified = Object.values(editItem).some(
-      (i, index) => i !== Object.values(item)[index]
-    );
-
+    const complete = Object.values(editItem).every((i) => i);
+    const modified = Object.values(editItem).some( (i, index) => i !== Object.values(item)[index] );
     if (!complete) {
       setError("You need to fill all the fields");
       return;
@@ -38,26 +34,22 @@ function ExperienceItemCollapsed({ item, setError }) {
       return;
     }
     const uid = item.uid;
-    portfolioDispatch({ type: "EDIT_EDUCATION", uid: uid, value: editItem });
-    setError("Item updated");
+    portfolioDispatch({ type: "EDIT_EXPERIENCE", uid: uid, value: editItem });
+    setError("Experience item updated");
     setCollapsed(!collapsed);
   };
 
-  useEffect(() => {
-    console.log(editItem);
-  }, [editItem]);
-
   const onRemoveCLickHandler = () => {
     const uid = item.uid;
-    portfolioDispatch({ type: "REMOVE_EDUCATION", uid: uid });
-    setError("Item removed");
+    portfolioDispatch({ type: "REMOVE_EXPERIENCE", uid: uid });
+    setError("Experience item removed");
   };
 
   return (
     <div className="item-collapsed">
       <div className="item-collapsed-title">
         <h2 className="justify-start items-center">
-          <span className="flex-1">{editItem.company}</span>
+          <span className="flex-1">{item.company}</span>
           <Icons.Remove
             size={"1x"}
             onClick={onRemoveCLickHandler}

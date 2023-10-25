@@ -4,7 +4,6 @@ import { useState } from "react";
 import EducationInput from "./EducationInput";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
-import { useEffect } from "react";
 
 function ItemCollapsed({ item, setError }) {
   const { portfolioDispatch } = useContext(AppContext);
@@ -26,7 +25,6 @@ function ItemCollapsed({ item, setError }) {
   const onAcceptClickHandler = () => {
     const complete = Object.values(editItem).every((item) => item);
     const modified = Object.values(editItem).some( (i, index) => i !== Object.values(item)[index] );
-
     if (!complete) {
       setError("You need to fill all the fields");
       return;
@@ -37,25 +35,21 @@ function ItemCollapsed({ item, setError }) {
     }
     const uid = item.uid;
     portfolioDispatch({ type: "EDIT_EDUCATION", uid: uid, value: editItem });
-    setError("Item updated");
+    setError("Education item updated");
     setCollapsed(!collapsed);
   };
-
-  useEffect(() => {
-    console.log(editItem);
-  }, [editItem]);
 
   const onRemoveCLickHandler = () => {
     const uid = item.uid;
     portfolioDispatch({ type: "REMOVE_EDUCATION", uid: uid });
-    setError("Item removed");
+    setError("Education item removed");
   };
 
   return (
     <div className="item-collapsed">
       <div className="item-collapsed-title">
         <h2 className="justify-start items-center">
-          <span className="flex-1">{editItem.school}</span>
+          <span className="flex-1">{item.school}</span>
           <Icons.Remove
             size={"1x"}
             onClick={onRemoveCLickHandler}

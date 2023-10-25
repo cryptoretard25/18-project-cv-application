@@ -6,6 +6,7 @@ import * as Icons from "./Icons";
 import Dropdown from "./Dropdown";
 import Education from "./Education/Education";
 import Experience from "./Experince/Experience";
+import preset from "../preset/preset";
 
 function Input() {
   const { portfolioDispatch } = useContext(AppContext);
@@ -19,7 +20,12 @@ function Input() {
           <Icons.Thrash size={"1x"} />
           Clear
         </button>
-        <button className="bg-slate-200 hover:text-slate-500">
+        <button
+          className="bg-slate-200 hover:text-slate-500"
+          onClick={() =>
+            portfolioDispatch({ type: "USE_PRESET", value: preset })
+          }
+        >
           Load Preset
         </button>
       </div>
@@ -27,7 +33,7 @@ function Input() {
       <Dropdown name="Education" icon={<Icons.Cap size={"sm"} />}>
         <Education />
       </Dropdown>
-      <Dropdown name="Experience" icon={<Icons.Briefcase size={"sm"} />} >
+      <Dropdown name="Experience" icon={<Icons.Briefcase size={"sm"} />}>
         <Experience />
       </Dropdown>
     </div>
