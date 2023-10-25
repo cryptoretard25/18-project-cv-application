@@ -42,7 +42,7 @@ function inputStateInput({ inputState, inputHandler, setInputState }) {
           onChange={inputHandler}
         />
       </div>
-      <div className="flex">
+      <div className="flex" style={{marginBottom: "-4px"}}>
         <div className="input-item">
           <label htmlFor="startDate">
             <h3>Start Date</h3>

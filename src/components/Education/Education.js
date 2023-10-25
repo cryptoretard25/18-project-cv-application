@@ -3,9 +3,10 @@ import * as Icons from "../Icons";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import { useState } from "react";
-import ItemCollapsed from "../ItemCollapsed";
+import EducationItemCollapsed from "./EducationItemCollapsed";
 import EducationInput from "./EducationInput";
 import EducationItem from "../../classes/EducationItem";
+import ExperienceItemCollapsed from "../Experince/ExperienceItemCollapsed";
 
 const emptyEducation = () => new EducationItem();
 
@@ -64,7 +65,7 @@ function Education({ showInput, setShowInput, setError }) {
   const educationInterface = (
     <>
       {portfolioState.education.map((item) => {
-        return <ItemCollapsed key={item.uid} item={item} setError = {setError} />;
+        return <EducationItemCollapsed key={item.uid} item={item} setError = {setError} />;
       })}
       <div className="interface items-center justify-center">
         <button

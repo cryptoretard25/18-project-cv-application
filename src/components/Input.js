@@ -27,10 +27,7 @@ function Input() {
       <Dropdown name="Education" icon={<Icons.Cap size={"sm"} />}>
         <Education />
       </Dropdown>
-      <Dropdown
-        name="Experience"
-        icon={<Icons.Briefcase size={"sm"} />}
-      >
+      <Dropdown name="Experience" icon={<Icons.Briefcase size={"sm"} />} >
         <Experience />
       </Dropdown>
     </div>

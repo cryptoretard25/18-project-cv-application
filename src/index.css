@@ -91,6 +91,18 @@
     height: 28px;
   }
 
+  textarea {
+    @apply bg-slate-200 rounded-lg;
+    min-width: 100%;
+    min-height: 100px;
+    padding: 6px 12px;
+    resize: none;
+  }
+
+  textarea:focus{
+    @apply outline-cyan-500;
+  }
+
   input[type="checkbox"] {
     padding: 20px;
     margin: 4px;
