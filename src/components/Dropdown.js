@@ -4,22 +4,26 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 
-function Dropdown({ children, name, icon }) {
-  const [dropDownOpened, setDropDownOpened] = useState(false);
+function Dropdown({ children, name, icon, opened }) {
+  const [dropDownOpened, setDropDownOpened] = useState(opened ? true : false);
   const [showInput, setShowInput] = useState(false);
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
 
   const dropDownClickHandler = () => {
     setDropDownOpened(!dropDownOpened);
   };
 
-  useEffect(()=>{
-    const timeoutId = setTimeout(()=>{
-      setError('')
-    }, 1500)
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setError("");
+    }, 1500);
 
-    return ()=> clearTimeout(timeoutId)
-  }, [error])
+    return () => clearTimeout(timeoutId);
+  }, [error]);
+
+  useEffect(() => {
+    console.log(name, dropDownOpened);
+  }, []);
 
   return (
     <div className="input-wrapper">

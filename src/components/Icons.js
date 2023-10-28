@@ -18,6 +18,9 @@ import {
   faXmark,
   faTrash,
   faPen,
+  faEnvelope,
+  faPhone,
+  faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function Thrash({ size }) {
@@ -112,4 +115,16 @@ export function Edit({ size, onClick, className }) {
   return (
     <FontAwesomeIcon icon={faPen} size={size} onClick={onClick} className={className} />
   );
+}
+
+export function Mail({size}){
+  return <FontAwesomeIcon icon={faEnvelope} size={size}/>;
+}
+
+export function Phone({ size }) {
+  return <FontAwesomeIcon icon={faPhone} size={size} />;
+}
+
+export function Location({size}) {
+  return <FontAwesomeIcon icon={faLocationDot} size={size} />;
 }

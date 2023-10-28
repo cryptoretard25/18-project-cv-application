@@ -15,11 +15,11 @@ function PersonalDetails() {
 
 
   return (
-    <div className="input-wrapper ">
-      <h1>
-        <User size={"sm"} />
-        <span>Personal details</span>
-      </h1>
+    // <div className="input-wrapper ">
+    //   <h1>
+    //     <User size={"sm"} />
+    //     <span>Personal details</span>
+    //   </h1>
       <form>
         <div className="input-item">
           <label htmlFor="firstname">
@@ -84,7 +84,7 @@ function PersonalDetails() {
           />
         </div>
       </form>
-    </div>
+    // </div>
   );
 }
 

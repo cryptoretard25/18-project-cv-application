@@ -223,13 +223,6 @@
     width: fit-content;
   }
 
-  .resume-wrapper {
-    @apply shadow-lg 
-    bg-white
-    shadow-slate-400;
-    height: 29.7cm;
-    width: 21cm;
-  }
 
   .button:hover {
     @apply border border-slate-900;
@@ -241,5 +234,42 @@
     flex-direction: row;
     align-items: center;
     gap: 8px;
+  }
+
+  /* Output */
+  .output {
+    @apply shadow-lg font-sans
+    bg-white
+    shadow-slate-400;
+    height: 29.7cm;
+    width: 21cm;
+  }
+
+
+  .personal-details{
+    @apply flex  bg-slate-700 text-white;
+    flex-direction: column;
+    padding: 36px 24px;
+    gap: 8px
+  }
+
+  .inline-details{
+    @apply flex gap-5;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inline-details h3, .personal-details h3{
+    @apply font-light text-xl;
+    width: auto;
+    gap: 6px;
+  }
+
+  .additional-info{
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 }

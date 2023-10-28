@@ -10,26 +10,28 @@ import preset from "../preset/preset";
 
 function Input() {
   const { portfolioDispatch } = useContext(AppContext);
+
+  const onClearClickHandler = () => portfolioDispatch({type: 'CLEAR'})
+  const onPresetClickHandler = () => portfolioDispatch({type: 'USE_PRESET', value: preset})
+
   return (
     <div className="input-container">
       <div className="input-wrapper p-2 flex-row">
-        <button
-          className="text-red-900 hover:text-red-600"
-          onClick={() => portfolioDispatch({ type: "CLEAR" })}
-        >
+        <button className="text-red-900 hover:text-red-600" onClick={ onClearClickHandler } >
           <Icons.Thrash size={"1x"} />
           Clear
         </button>
-        <button
-          className="bg-slate-200 hover:text-slate-500"
-          onClick={() =>
-            portfolioDispatch({ type: "USE_PRESET", value: preset })
-          }
-        >
+        <button className="bg-slate-200 hover:text-slate-500" onClick={ onPresetClickHandler } >
           Load Preset
         </button>
       </div>
-      <PersonalDetails />
+      <Dropdown
+        name="Personal details"
+        icon={<Icons.User size={"sm"} />}
+        opened
+      >
+        <PersonalDetails />
+      </Dropdown>
       <Dropdown name="Education" icon={<Icons.Cap size={"sm"} />}>
         <Education />
       </Dropdown>
