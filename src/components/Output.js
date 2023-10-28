@@ -20,12 +20,12 @@ function Output() {
       </div>
       {!detailsIsEmpty && (
         <div className="additional-info">
-          <div>
-            <h1 className="bg-slate-200">Education</h1>
+          <div className="education-info">
+            <h1 className="bg-slate-200 p-1">Education</h1>
             <Education />
           </div>
-          <div>
-            <h1 className="bg-slate-200">Experience</h1>
+          <div className="experience-info">
+            <h1 className="bg-slate-200 p-1">Professional Experience</h1>
             <Experience />
           </div>
         </div>

@@ -272,4 +272,10 @@
     flex-direction: column;
     gap: 12px;
   }
+
+  .education-info, .experience-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
