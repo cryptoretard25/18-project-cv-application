@@ -21,6 +21,7 @@ import {
   faEnvelope,
   faPhone,
   faLocationDot,
+  faPrint,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function Thrash({ size }) {
@@ -127,4 +128,8 @@ export function Phone({ size }) {
 
 export function Location({size}) {
   return <FontAwesomeIcon icon={faLocationDot} size={size} />;
+}
+
+export function Print({size}) {
+  return <FontAwesomeIcon icon={faPrint} size={size}/>;
 }

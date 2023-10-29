@@ -7,21 +7,32 @@ import Dropdown from "./Dropdown";
 import Education from "./Education/Education";
 import Experience from "./Experince/Experience";
 import preset from "../preset/preset";
+import { useReactToPrint } from "react-to-print";
 
 function Input() {
-  const { portfolioDispatch } = useContext(AppContext);
+  const { portfolioDispatch, handlePrintRef } = useContext(AppContext);
 
-  const onClearClickHandler = () => portfolioDispatch({type: 'CLEAR'})
-  const onPresetClickHandler = () => portfolioDispatch({type: 'USE_PRESET', value: preset})
-
+  const onClearClickHandler = () => portfolioDispatch({ type: "CLEAR" });
+  const onPresetClickHandler = () =>
+    portfolioDispatch({ type: "USE_PRESET", value: preset });
+  const onPrintClickHandler = useReactToPrint({
+    content: () => handlePrintRef.current,
+  });
   return (
     <div className="input-container">
       <div className="input-wrapper p-2 flex-row">
-        <button className="text-red-900 hover:text-red-600" onClick={ onClearClickHandler } >
+        <button
+          className="text-red-900 hover:text-red-600"
+          onClick={onClearClickHandler}
+        >
           <Icons.Thrash size={"1x"} />
           Clear
         </button>
-        <button className="bg-slate-200 hover:text-slate-500" onClick={ onPresetClickHandler } >
+        <button className="hover:text-slate-500" onClick={onPrintClickHandler}>
+          <Icons.Print size={"lg"} />
+          Print
+        </button>
+        <button className="bg-slate-200 hover:text-slate-500" onClick={onPresetClickHandler} >
           Load Preset
         </button>
       </div>

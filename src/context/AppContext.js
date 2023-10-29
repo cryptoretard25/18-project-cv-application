@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useReducer } from "react";
-import { createContext } from "react";
-
+import { useEffect, useReducer, createContext, useRef } from "react";
 
 export const AppContext = createContext();
 
@@ -31,15 +28,16 @@ const reducer = (currState, action) => {
           [action.type]: action.value,
         },
       };
-    case 'phone':
+    case "phone":
       return {
         ...currState,
         personalDetails: {
           ...currState.personalDetails,
-          phone: currState.personalDetails.phone.map((item, i)=> i===action.index? action.value : item)
-        
-        }
-      }
+          phone: currState.personalDetails.phone.map((item, i) =>
+            i === action.index ? action.value : item
+          ),
+        },
+      };
     case "ADD_EDUCATION":
       return {
         ...currState,
@@ -48,26 +46,40 @@ const reducer = (currState, action) => {
     case "EDIT_EDUCATION":
       return {
         ...currState,
-        education: currState.education.map(item => item.uid === action.uid? {...action.value}: item)
+        education: currState.education.map((item) =>
+          item.uid === action.uid ? { ...action.value } : item
+        ),
       };
     case "REMOVE_EDUCATION":
-      return {...currState, education: [...currState.education.filter(item=> item.uid !== action.uid)]}
+      return {
+        ...currState,
+        education: [
+          ...currState.education.filter((item) => item.uid !== action.uid),
+        ],
+      };
     case "ADD_EXPERIENCE":
       return {
         ...currState,
-        experience: [...currState.experience, action.value]
-      }
+        experience: [...currState.experience, action.value],
+      };
     case "EDIT_EXPERIENCE":
       return {
-        ...currState, 
-        experience: currState.experience.map(item => item.uid===action.uid? {...action.value}: item)
-      }
+        ...currState,
+        experience: currState.experience.map((item) =>
+          item.uid === action.uid ? { ...action.value } : item
+        ),
+      };
     case "REMOVE_EXPERIENCE":
-      return {...currState, experience: [...currState.experience.filter(item => item.uid !== action.uid)]}
+      return {
+        ...currState,
+        experience: [
+          ...currState.experience.filter((item) => item.uid !== action.uid),
+        ],
+      };
     case "CLEAR":
       return initialPersonalDetails;
     case "USE_PRESET":
-      return {...action.value}
+      return { ...action.value };
     default:
       return currState;
   }
@@ -78,13 +90,21 @@ export const AppContextProvider = ({ children }) => {
     reducer,
     initialPersonalDetails
   );
+  
+  const handlePrintRef = useRef();
 
   useEffect(() => {
     console.log(portfolioState);
   }, [portfolioState]);
 
   return (
-    <AppContext.Provider value={{ portfolioState, portfolioDispatch }}>
+    <AppContext.Provider
+      value={{
+        portfolioState,
+        portfolioDispatch,
+        handlePrintRef,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

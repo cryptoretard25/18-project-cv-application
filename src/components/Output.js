@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 import * as Icons from "./Icons";
 import Education from "./output/Education";
@@ -6,13 +6,11 @@ import Experience from "./output/Experience";
 import PersonalDetails from "./output/PersonalDetails";
 
 function Output() {
-  const { portfolioState } = useContext(AppContext);
-
+  const { portfolioState, handlePrintRef } = useContext(AppContext);
   const { personalDetails, education, experience } = portfolioState;
-  //const detailsIsEmpty = Object.values(personalDetails).some((i) => !i);
 
   return (
-    <div className="output">
+    <div className="output" ref={handlePrintRef}>
       <div className="personal-details">
         <PersonalDetails personalDetails={personalDetails} Icons={Icons} />
       </div>
