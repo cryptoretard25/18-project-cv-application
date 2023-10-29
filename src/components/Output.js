@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import * as Icons from "./Icons";
 import Education from "./output/Education";
@@ -8,6 +8,17 @@ import PersonalDetails from "./output/PersonalDetails";
 function Output() {
   const { portfolioState, handlePrintRef } = useContext(AppContext);
   const { personalDetails, education, experience } = portfolioState;
+  
+  const [educationIsEmpty, setEducationIsEmpty] = useState(true)
+  const [experienceIsEmpty, setExperienceIsEmpty] = useState(true);
+  const isEmpty = (arr)=>{
+    return arr.length === 0
+  }
+
+  useEffect(() => {
+    setEducationIsEmpty(isEmpty(education));
+    setExperienceIsEmpty(isEmpty(experience));
+  }, [portfolioState]);
 
   return (
     <div className="output" ref={handlePrintRef}>
@@ -15,14 +26,20 @@ function Output() {
         <PersonalDetails personalDetails={personalDetails} Icons={Icons} />
       </div>
       <div className="additional-info">
-        <div className="education-info">
-          <h1 className="bg-slate-200 p-1">Education</h1>
-          <Education />
-        </div>
-        <div className="experience-info">
-          <h1 className="bg-slate-200 p-1">Professional Experience</h1>
-          <Experience />
-        </div>
+        {!educationIsEmpty && (
+          <div className="education-info">
+            <h1 className="bg-slate-200 p-1">Education</h1>
+            {education.map((item, _i)=>{
+              return <Education education={item} key={_i}/>
+            })}
+          </div>
+        )}
+        {!experienceIsEmpty && (
+          <div className="experience-info">
+            <h1 className="bg-slate-200 p-1">Professional Experience</h1>
+            <Experience />
+          </div>
+        )}
       </div>
     </div>
   );

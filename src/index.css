@@ -99,7 +99,7 @@
     resize: none;
   }
 
-  textarea:focus{
+  textarea:focus {
     @apply outline-cyan-500;
   }
 
@@ -108,26 +108,25 @@
     margin: 4px;
     width: 14px;
     height: 14px;
-    background-color: red !important
+    background-color: red !important;
   }
 
   input:focus {
     @apply outline-cyan-500;
   }
 
-  [type="checkbox"]:checked{
+  [type="checkbox"]:checked {
     background-color: black;
   }
 
   .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
 
   #root {
     @apply bg-slate-200 text-slate-950;
@@ -223,7 +222,6 @@
     width: fit-content;
   }
 
-
   .button:hover {
     @apply border border-slate-900;
   }
@@ -236,28 +234,28 @@
     gap: 8px;
   }
 
-  .phone-div{
+  .phone-div {
     display: flex;
     align-items: center;
     gap: 6px;
     width: 100%;
   }
-  
-  .phone-div input{
+
+  .phone-div input {
     padding: 4px;
   }
 
-  .countrycode{
+  .countrycode {
     width: 25px;
     text-align: center;
   }
 
-  .phone-first{
+  .phone-first {
     width: 40px;
-    text-align: center
+    text-align: center;
   }
 
-  .phone-rest{
+  .phone-rest {
     flex: 1;
   }
 
@@ -270,37 +268,64 @@
     width: 21cm;
   }
 
-
-  .personal-details{
+  .personal-details {
     @apply flex  bg-slate-700 text-white;
     flex-direction: column;
     padding: 36px 24px;
-    gap: 8px
+    gap: 8px;
   }
 
-  .inline-details{
+  .inline-details {
     @apply flex gap-5;
     width: 100%;
     align-items: center;
     justify-content: center;
   }
 
-  .inline-details h3, .personal-details h3{
+  .inline-details h3,
+  .personal-details h3 {
     @apply font-light text-xl;
     width: auto;
     gap: 6px;
   }
 
-  .additional-info{
+  .additional-info {
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  .education-info, .experience-info {
+  .education-info,
+  .experience-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
+  }
+
+  .education-item {
+    @apply text-lg;
+    padding: 0 24px;
+    display: flex;
+    flex: 1;
+    gap: 96px;
+    overflow: hidden;
+  }
+
+  .education-item-left,
+  .education-item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 4px;
+  }
+
+  .education-item-right {
+    flex: 1;
+  }
+  .education-item-right h3 {
+    @apply text-xl;
+    justify-content: start;
+    word-wrap: break-word;
   }
 }

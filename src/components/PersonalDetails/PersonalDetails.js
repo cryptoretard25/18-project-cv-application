@@ -100,6 +100,7 @@ function PersonalDetails() {
           id="address"
           value={portfolioState.personalDetails.address}
           onChange={onInputChange}
+          maxLength={30}
         />
       </div>
     </form>

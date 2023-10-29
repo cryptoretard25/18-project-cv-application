@@ -32,7 +32,10 @@ function Input() {
           <Icons.Print size={"lg"} />
           Print
         </button>
-        <button className="bg-slate-200 hover:text-slate-500" onClick={onPresetClickHandler} >
+        <button
+          className="bg-slate-200 hover:text-slate-500"
+          onClick={onPresetClickHandler}
+        >
           Load Preset
         </button>
       </div>
