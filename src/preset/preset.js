@@ -5,7 +5,7 @@ const preset = {
     firstname: "Ben",
     lastname: "Johnes",
     email: "benjones111@gmail.com",
-    phonenumber: "+89742211453",
+    phone: ["+", "44", "-", "(", "3245", ")", "-", "55215521"],
     address: "London, United Kingdom",
   },
   education: [

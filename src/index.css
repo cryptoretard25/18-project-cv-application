@@ -236,6 +236,31 @@
     gap: 8px;
   }
 
+  .phone-div{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+  
+  .phone-div input{
+    padding: 4px;
+  }
+
+  .countrycode{
+    width: 25px;
+    text-align: center;
+  }
+
+  .phone-first{
+    width: 40px;
+    text-align: center
+  }
+
+  .phone-rest{
+    flex: 1;
+  }
+
   /* Output */
   .output {
     @apply shadow-lg font-sans

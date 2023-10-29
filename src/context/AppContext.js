@@ -10,8 +10,8 @@ const initialPersonalDetails = {
     firstname: "",
     lastname: "",
     email: "",
-    phonenumber: "",
     address: "",
+    phone: ["+", "", "-", "(", "", ")", "-", ""],
   },
   education: [],
   experience: [],
@@ -31,6 +31,15 @@ const reducer = (currState, action) => {
           [action.type]: action.value,
         },
       };
+    case 'phone':
+      return {
+        ...currState,
+        personalDetails: {
+          ...currState.personalDetails,
+          phone: currState.personalDetails.phone.map((item, i)=> i===action.index? action.value : item)
+        
+        }
+      }
     case "ADD_EDUCATION":
       return {
         ...currState,
