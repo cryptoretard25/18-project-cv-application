@@ -1,7 +1,8 @@
 {
   "name": "18-project-cv-application",
-  "version": "0.1.0",
+  "version": "1.0",
   "private": true,
+  "homepage": "https://cryptoretard25.github.io/18-project-cv-application",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
@@ -28,7 +29,9 @@
     "eject": "react-scripts eject",
     "build:css": "postcss src/index.css -o src/index.postcss.css",
     "start:css": "npm run build:css && react-scripts start",
-    "build:css:prod": "postcss src/index.css -o src/index.postcss.css && tailwindcss build src/index.postcss.css -o src/index.css"
+    "build:css:prod": "postcss src/index.css -o src/index.postcss.css && tailwindcss build src/index.postcss.css -o src/index.css",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +53,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "gh-pages": "^6.0.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3"
   }
