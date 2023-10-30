@@ -4,6 +4,7 @@ import * as Icons from "./Icons";
 import Education from "./output/Education";
 import Experience from "./output/Experience";
 import PersonalDetails from "./output/PersonalDetails";
+import { isEmpty } from "../preset/utils";
 
 function Output() {
   const { portfolioState, handlePrintRef } = useContext(AppContext);
@@ -11,9 +12,6 @@ function Output() {
   
   const [educationIsEmpty, setEducationIsEmpty] = useState(true)
   const [experienceIsEmpty, setExperienceIsEmpty] = useState(true);
-  const isEmpty = (arr)=>{
-    return arr.length === 0
-  }
 
   useEffect(() => {
     setEducationIsEmpty(isEmpty(education));
@@ -37,7 +35,9 @@ function Output() {
         {!experienceIsEmpty && (
           <div className="experience-info">
             <h1 className="bg-slate-200 p-1">Professional Experience</h1>
-            <Experience />
+            {experience.map((item, _i)=>{
+              return <Experience experience={item} key={_i} />
+            })}
           </div>
         )}
       </div>

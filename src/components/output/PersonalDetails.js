@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { isEmpty } from '../../preset/utils'
 
 function PersonalDetails({personalDetails, Icons}) {
   const [phoneIsEmpty, setPhoneIsEmpty] = useState(true)
   const [emailIsEmpty, setEmailIsEmpty] = useState(true)
   const [addressIsEmpty, setAddressIsEmpty] = useState(true)
 
-  const isEmpty = (item)=>{
-    if(Array.isArray(item)) return item.some((i) => !i);
-    return item === ''
-  }
-  
   useEffect(()=>{
     setPhoneIsEmpty(isEmpty(personalDetails.phone));
     setEmailIsEmpty(isEmpty(personalDetails.email));

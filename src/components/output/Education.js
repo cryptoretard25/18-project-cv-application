@@ -1,23 +1,21 @@
 import React from 'react'
+import { formatDate } from '../../preset/utils';
+
 
 function Education({education}) {
-  const formatDate = (date)=>{
-    if(date === 'Present') return date;
-    const [year, month] = date.split('-')
-    return `${month}/${year}`
-  }
+
 
   const {school, degree, location, startDate, endDate} = education
 
   return (
-    <div className="education-item">
-      <div className="education-item-left">
+    <div className="output-item">
+      <div className="output-item-left">
         <p className="dates">
           {formatDate(startDate)} - {formatDate(endDate)}
         </p>
         <p>{location}</p>
       </div>
-      <div className="education-item-right">
+      <div className="output-item-right">
         <h3>{school}</h3>
         <p>{degree}</p>
       </div>

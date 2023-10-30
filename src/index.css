@@ -303,29 +303,31 @@
     gap: 16px;
   }
 
-  .education-item {
+  .output-item {
     @apply text-lg;
     padding: 0 24px;
     display: flex;
     flex: 1;
     gap: 96px;
-    overflow: hidden;
   }
 
-  .education-item-left,
-  .education-item-right {
+  .output-item-left,
+  .output-item-right {
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 4px;
   }
 
-  .education-item-right {
+  .output-item-right {
     flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-align: justify;
   }
-  .education-item-right h3 {
+
+  .output-item-right h3 {
     @apply text-xl;
     justify-content: start;
-    word-wrap: break-word;
   }
 }
