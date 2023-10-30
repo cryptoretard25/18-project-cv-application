@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/18-project-cv-application/static/css/main.2cffd504.css",
+    "main.js": "/18-project-cv-application/static/js/main.443167e7.js",
+    "static/js/787.68a52a8e.chunk.js": "/18-project-cv-application/static/js/787.68a52a8e.chunk.js",
+    "static/media/SF-UI-Display-Regular.otf": "/18-project-cv-application/static/media/SF-UI-Display-Regular.696eab3309b55104976e.otf",
+    "static/media/ProstoOne-Regular.ttf": "/18-project-cv-application/static/media/ProstoOne-Regular.677db36ec3f39ac20a40.ttf",
+    "index.html": "/18-project-cv-application/index.html",
+    "main.2cffd504.css.map": "/18-project-cv-application/static/css/main.2cffd504.css.map",
+    "main.443167e7.js.map": "/18-project-cv-application/static/js/main.443167e7.js.map",
+    "787.68a52a8e.chunk.js.map": "/18-project-cv-application/static/js/787.68a52a8e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2cffd504.css",
+    "static/js/main.443167e7.js"
+  ]
+}
