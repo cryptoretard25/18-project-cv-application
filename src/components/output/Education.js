@@ -3,8 +3,6 @@ import { formatDate } from '../../preset/utils';
 
 
 function Education({education}) {
-
-
   const {school, degree, location, startDate, endDate} = education
 
   return (
